@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Faculties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Title</th>
+      <th>Office number</th>
+      <th>Email</th>
+      <th>Phone number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @faculties.each do |faculty| %>
+      <tr>
+        <td><%= faculty.last_name %></td>
+        <td><%= faculty.first_name %></td>
+        <td><%= faculty.title %></td>
+        <td><%= faculty.office_number %></td>
+        <td><%= faculty.email %></td>
+        <td><%= faculty.phone_number %></td>
+        <td><%= link_to 'Show', faculty %></td>
+        <td><%= link_to 'Edit', edit_faculty_path(faculty) %></td>
+        <td><%= link_to 'Destroy', faculty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h3> Import faculty</h3>
+<%= form_tag import_faculties_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Faculties" %>
+  <% end %>
+
+  <%= link_to 'New Faculty', new_faculty_path %>
