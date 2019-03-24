@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  resources :courses
+ # get '/courses' => 'courses#index', as: 'course'
+root 'faculties#index'
   resources :faculties do
     collection {post :import}
   end
