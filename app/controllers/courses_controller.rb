@@ -61,6 +61,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def import
+    Course.import(params[:file])
+    redirect_to courses_path, notice: "Courses added successfully"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -69,6 +74,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:course_number, :course_description)
+      params.require(:course).permit(:name)
     end
 end

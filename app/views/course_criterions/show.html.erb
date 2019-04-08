@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @course_criterion.score %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_criterion.course.name %>
+</p>
+
+<p>
+  <strong>Criterion:</strong>
+  <%= @course_criterion.criterion.name %>
+</p>
+
+<%= link_to 'Edit', edit_course_criterion_path(@course_criterion) %> |
+<%= link_to 'Back', course_criterions_path %>

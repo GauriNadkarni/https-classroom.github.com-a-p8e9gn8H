@@ -10,11 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_222107) do
+ActiveRecord::Schema.define(version: 2019_04_07_221311) do
+
+  create_table "course_criterions", force: :cascade do |t|
+    t.integer "score"
+    t.integer "course_id"
+    t.integer "criterion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_criterions_on_course_id"
+    t.index ["criterion_id"], name: "index_course_criterions_on_criterion_id"
+  end
+
+  create_table "coursefaculties", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "faculty_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_coursefaculties_on_course_id"
+    t.index ["faculty_id"], name: "index_coursefaculties_on_faculty_id"
+  end
 
   create_table "courses", force: :cascade do |t|
-    t.string "course_number"
-    t.string "course_description"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "criterions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_222107) do
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
   end
 
 end

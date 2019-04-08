@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Course Criterions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Score</th>
+      <th>Course</th>
+      <th>Criterion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_criterions.each do |course_criterion| %>
+      <tr>
+        <td><%= course_criterion.score %></td>
+        <td><%= course_criterion.course.name %></td>
+        <td><%= course_criterion.criterion.name %></td>
+        <td><%= link_to 'Show', course_criterion %></td>
+        <td><%= link_to 'Edit', edit_course_criterion_path(course_criterion) %></td>
+        <td><%= link_to 'Destroy', course_criterion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course Criterion', new_course_criterion_path %>

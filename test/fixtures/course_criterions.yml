@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1
+  course: one
+  criterion: one
+
+two:
+  score: 1
+  course: two
+  criterion: two
