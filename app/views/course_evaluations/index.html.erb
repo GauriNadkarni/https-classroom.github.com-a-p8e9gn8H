@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Course Evaluations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Faculty</th>
+      <th>Course</th>
+      <th>Criterion</th>
+      <th>Poor</th>
+      <th>Acceptable</th>
+      <th>Exceeds</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_evaluations.each do |course_evaluation| %>
+      <tr>
+        <td><%= course_evaluation.faculty.full_name %></td>
+        <td><%= course_evaluation.course.name %></td>
+        <td><%= course_evaluation.criterion.name %></td>
+        <td><%= course_evaluation.poor %></td>
+        <td><%= course_evaluation.acceptable %></td>
+        <td><%= course_evaluation.exceeds %></td>
+
+        <td><%= link_to 'Show', course_evaluation %></td>
+        <td><%= link_to 'Edit', edit_course_evaluation_path(course_evaluation) %></td>
+        <td><%= link_to 'Destroy', course_evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course Evaluation', new_course_evaluation_path %>

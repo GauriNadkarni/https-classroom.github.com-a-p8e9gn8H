@@ -5,5 +5,10 @@
   <%= @criterion.name %>
 </p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @criterion.criterion_description %>
+</p>
+
 <%= link_to 'Edit', edit_criterion_path(@criterion) %> |
 <%= link_to 'Back', criterions_path %>

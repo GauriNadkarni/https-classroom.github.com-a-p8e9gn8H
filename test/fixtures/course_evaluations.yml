@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  poor: 1
+  acceptable: 1
+  exceeds: 1
+  faculty: one
+  course: one
+  criterion: one
+
+two:
+  poor: 1
+  acceptable: 1
+  exceeds: 1
+  faculty: two
+  course: two
+  criterion: two

@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :score %>
-    <%= form.number_field :score %>
-  </div>
+
 
   <div class="field">
     <%= form.label :course_id %>
@@ -24,6 +21,21 @@
   <div class="field">
     <%= form.label :criterion_id %>
     <%= form.collection_select :criterion_id, Criterion.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exceeds_threshold %>
+    <%= form.number_field :exceeds_threshold %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acceptable_threshold %>
+    <%= form.number_field :acceptable_threshold %>
+  </div>
+
+  <div class="field">
+    <%= form.label :below_threshold %>
+    <%= form.number_field :below_threshold %>
   </div>
 
   <div class="actions">

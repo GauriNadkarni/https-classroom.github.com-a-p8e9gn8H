@@ -2,6 +2,7 @@ class Course < ApplicationRecord
   alias_attribute :criteria_assignments, :course_criterion
   has_many :course_criterion
   has_many :coursefaculty
+has_many :course_evaluations
 
   has_many :criteria, through: :course_criterion, source: :criterion
   has_many :faculties, through: :coursefaculties, source: :faculty
@@ -13,7 +14,8 @@ class Course < ApplicationRecord
       #  Faculty.create! (row.to_hash)
 
       faculty_hash=Course.new
-      faculty_hash.name = row[0]
+      faculty_hash.course_number = row[0]
+      faculty_hash.name = row[1]
 
       faculty_hash.save
 

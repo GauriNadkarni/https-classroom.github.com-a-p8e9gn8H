@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Criterions</h1>
+<h2>Criteria</h2>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @criterions.each do |criterion| %>
       <tr>
         <td><%= criterion.name %></td>
+        <td><%= criterion.criterion_description %></td>
         <td><%= link_to 'Show', criterion %></td>
         <td><%= link_to 'Edit', edit_criterion_path(criterion) %></td>
         <td><%= link_to 'Destroy', criterion, method: :delete, data: { confirm: 'Are you sure?' } %></td>

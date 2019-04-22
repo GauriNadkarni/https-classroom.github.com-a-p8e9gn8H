@@ -1,6 +1,21 @@
 class CourseCriterionsController < ApplicationController
   before_action :set_course_criterion, only: [:show, :edit, :update, :destroy]
 
+  def exceeds_threshold
+    course_criterion = CourseCriterion.find(params[:id])
+    #render json: course_criterion
+  end
+
+  def acceptable_threshold
+    course_criterion = CourseCriterion.find(params[:id])
+   # render json: course_criterion
+  end
+
+  def below_threshold
+    course_criterion = CourseCriterion.find(params[:id])
+    render json: course_criterion
+  end
+
   # GET /course_criterions
   # GET /course_criterions.json
   def index
@@ -69,6 +84,6 @@ class CourseCriterionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_criterion_params
-      params.require(:course_criterion).permit(:score, :course_id, :criterion_id)
+      params.require(:course_criterion).permit(:course_id, :criterion_id, :exceeds_threshold, :acceptable_threshold, :below_threshold)
     end
 end

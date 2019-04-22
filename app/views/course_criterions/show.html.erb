@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Score:</strong>
-  <%= @course_criterion.score %>
-</p>
 
 <p>
   <strong>Course:</strong>
@@ -13,6 +9,21 @@
 <p>
   <strong>Criterion:</strong>
   <%= @course_criterion.criterion.name %>
+</p>
+
+<p>
+  <strong>Exceeds Threshold:</strong>
+  <%= @course_criterion.exceeds_threshold %><strong>%</strong>
+</p>
+
+<p>
+  <strong>Acceptable Threshold:</strong>
+  <%= @course_criterion.acceptable_threshold %><strong>%</strong>
+</p>
+
+<p>
+  <strong>Below Threshold:</strong>
+  <%= @course_criterion.below_threshold  %><strong>%</strong>
 </p>
 
 <%= link_to 'Edit', edit_course_criterion_path(@course_criterion) %> |

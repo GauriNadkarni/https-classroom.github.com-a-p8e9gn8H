@@ -10,16 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_07_221311) do
+ActiveRecord::Schema.define(version: 2019_04_18_191743) do
 
   create_table "course_criterions", force: :cascade do |t|
-    t.integer "score"
     t.integer "course_id"
     t.integer "criterion_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exceeds_threshold"
+    t.integer "acceptable_threshold"
+    t.integer "below_threshold"
     t.index ["course_id"], name: "index_course_criterions_on_course_id"
     t.index ["criterion_id"], name: "index_course_criterions_on_criterion_id"
+  end
+
+  create_table "course_evaluations", force: :cascade do |t|
+    t.integer "poor"
+    t.integer "acceptable"
+    t.integer "exceeds"
+    t.integer "faculty_id"
+    t.integer "course_id"
+    t.integer "criterion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_evaluations_on_course_id"
+    t.index ["criterion_id"], name: "index_course_evaluations_on_criterion_id"
+    t.index ["faculty_id"], name: "index_course_evaluations_on_faculty_id"
   end
 
   create_table "coursefaculties", force: :cascade do |t|
@@ -35,12 +51,14 @@ ActiveRecord::Schema.define(version: 2019_04_07_221311) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "course_number"
   end
 
   create_table "criterions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "criterion_description"
   end
 
   create_table "faculties", force: :cascade do |t|

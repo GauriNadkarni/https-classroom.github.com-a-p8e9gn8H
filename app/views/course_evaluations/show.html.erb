@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Faculty:</strong>
+  <%= @course_evaluation.faculty.full_name %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_evaluation.course.name %>
+</p>
+
+<p>
+  <strong>Criterion:</strong>
+  <%= @course_evaluation.criterion.name %>
+</p>
+
+<p>
+  <strong>Poor:</strong>
+  <%= @course_evaluation.poor %>
+</p>
+
+<p>
+  <strong>Acceptable:</strong>
+  <%= @course_evaluation.acceptable %>
+</p>
+
+<p>
+  <strong>Exceeds:</strong>
+  <%= @course_evaluation.exceeds %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_course_evaluation_path(@course_evaluation) %> |
+<%= link_to 'Back', course_evaluations_path %>

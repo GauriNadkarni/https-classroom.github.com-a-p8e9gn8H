@@ -11,15 +11,36 @@
   </head>
 
   <body>
+  <h1>ABET Evaluation Management</h1>
   <div id="header">
-    <h1>ABET Evaluations</h1>
+    <% if current_user || current_user!=nil %>
 
-      <%= link_to "Faculties", faculties_path %>
-      <%= link_to "Courses", courses_path %>
-      <%= link_to "Criteria", criterions_path %>
-      <%= link_to "Score", course_criterions_path %>
-      <%= link_to "Course Assignment", coursefaculties_path %>
+
+
+        <% if current_user.admin? %>
+
+        <%= link_to "Faculties", faculties_path %>
+
+        <%= link_to "Courses", courses_path %>
+
+        <%= link_to "Criteria", criterions_path %>
+
+        <%= link_to "Course Criteria Assignment", course_criterions_path %>
+
+        <%= link_to "Faculty Course Assignment", coursefaculties_path %>
+
+
+               <%= link_to"Faculty Report",faculty_reports_index_path %>
+
+
+<!--            Logged in as <%#=current_user.email %>.-->
+          <%#= link_to "Log out", session_do_logout_path %>
+
+       <%end %>
+      <%= link_to "Course Evaluations", course_evaluations_path %>
+      Logged in as <%=current_user.email %>.
       <%= link_to "Log out", session_do_logout_path %>
+    <%end %>
 
     </div>
 

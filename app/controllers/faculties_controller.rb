@@ -15,11 +15,16 @@ class FacultiesController < ApplicationController
   # GET /faculties/new
   def new
     @faculty = Faculty.new
-    @faculty.admin=false
+    # @faculty.admin=false
   end
 
   # GET /faculties/1/edit
   def edit
+  end
+
+  def admin
+    faculty = Faculty.find(params[:id])
+    render json: faculty
   end
 
   # POST /faculties
@@ -76,6 +81,6 @@ class FacultiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def faculty_params
-      params.require(:faculty).permit(:last_name, :first_name, :title, :office_number, :email, :phone_number)
+      params.require(:faculty).permit(:last_name, :first_name, :title, :office_number, :email, :phone_number, :admin)
     end
 end

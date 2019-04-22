@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  # load_and_authorize_resource
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
@@ -10,6 +11,11 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+  end
+
+  def course_number
+    course = Course.find(params[:id])
+    render json: course
   end
 
   # GET /courses/new
@@ -25,6 +31,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    # @course.faculty_id = current.faculty_id
 
     respond_to do |format|
       if @course.save
@@ -74,6 +81,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name)
+      params.require(:course).permit(:course_number, :name)
     end
 end

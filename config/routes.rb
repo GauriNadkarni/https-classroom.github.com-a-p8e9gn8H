@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :course_evaluations
   resources :coursefaculties
   resources :course_criterions
   resources :criterions
+
   resources :courses do
     collection {post :import}
   end
@@ -9,6 +11,9 @@ Rails.application.routes.draw do
   get 'session/do_logout'
   post 'session/do_login'
   get 'session/dashboard'
+  post 'session/dashboard'
+  get 'faculty_reports/index'
+  get 'course_reports/index'
  # get '/courses' => 'courses#index', as: 'course'
 root 'home#index'
   resources :faculties do

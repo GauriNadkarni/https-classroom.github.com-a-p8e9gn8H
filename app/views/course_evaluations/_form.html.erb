@@ -1,0 +1,85 @@
+<%= form_with(model: course_evaluation, local: true) do |form| %>
+  <% if course_evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course_evaluation.errors.count, "error") %> prohibited this course_evaluation from being saved:</h2>
+
+      <ul>
+      <% course_evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%#= form.collection_select :criterion_id, Criterion.all, :id, :name %>
+
+<!--  <div class="field">-->
+    <%#= form.label :faculty_id %>
+    <%#= form.collection_select :faculty_id, Faculty.all, :id, :full_name %>
+<!--  </div>-->
+
+  <% @faculty = Faculty.where(:id => current_user.id) %>
+
+  <div class="field">
+    <%= form.label :faculty_id %>
+    <%= form.collection_select :faculty_id, @faculty.all, :id, :full_name %>
+    <%#= form.text_field :faculty_id, value:current_user.full_name, :disabled=>true %>
+    <%#= form.collection_select :faculty_id, Faculty.all, :id, :full_name,   :default =>  [Faculty.where(:id => current_user.id)] %>
+  </div>
+
+
+  <%#@coursefaculties = Coursefaculty.where(:faculty_id => current_user.id) %>
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= form.collection_select :course_id, @faculty.first.courses, :id, :course_number %>
+  </div>
+<%# @course = Course.where(:id=> form.course_id.value) %>
+<!--  <div class="field">-->
+    <%#= form.label :criterion_id %>
+    <%#=form.collection_select :criterion_id, @course.first.criterios, :id, :name %>
+    <%#= form.collection_select :course_number, :criterion_id, Criterion.all, :criterion_id, :name %>
+    <%#= form.collection_select :name, Criterion.all, :criterion_id, :name %>
+<!--  </div>-->
+<% @course_criterion = CourseCriterion.select(:id, :name).find_by(params[:criterion_id]) %>
+  <div class="field">
+    <%= form.label :criterion_id %>
+    <%#= form.collection_select :criterion_id, course_criterion.select(:id, :name).find_by(params[:course_id]), :id, :name %>
+    <%= form.collection_select :criterion_id, Criterion.all, :id, :name %>
+    <%#= form.collection_select(:criterion), :id, :name %>
+    <%# form.collection_select :criterion_id, @course_criterion.a, :id, :name %>
+    <%#= form.collection_select :criterion_id, Criterion.select(:id, :name).find_by(params[:criterion_id]), :id, :name %>
+  </div>
+  <Strong>Please enter the PERCENT of students for the following :</Strong>
+
+  <div class="field">
+    <%= form.label :poor %>
+    <%= form.number_field :poor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acceptable %>
+    <%= form.number_field :acceptable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exceeds %>
+    <%= form.number_field :exceeds %>
+  </div>
+<!--  <p id="notice"><%#= notice %></p>-->
+<%# @poor = params[:poor].to_i %>
+  <%# @exceeds = params[:exceeds].to_i %>
+  <%# @acceptable= params[:acceptable].to_i %>
+  <%#=poor %>
+  <%# @total = poor.to_i + exceeds.to_i + acceptable.to_i %>
+  <%# if @total>0 %>
+  <%# params[:poor]= poor*100/total%>
+  <%# params[:acceptable]= acceptable*100/total%>
+  <%# params[:exceeds]= exceeds*100/total%>
+<%# else %>
+    <%#= 'Null values' %>
+    <%#end %>
+<%# params[:faculty_id]=params[faculty_id] %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -7,6 +7,11 @@ class CriterionsController < ApplicationController
     @criterions = Criterion.all
   end
 
+  def criterion_description
+    criterion = Criterion.find(params[:id])
+    render json: criterion
+  end
+
   # GET /criterions/1
   # GET /criterions/1.json
   def show
@@ -69,6 +74,6 @@ class CriterionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def criterion_params
-      params.require(:criterion).permit(:name)
+      params.require(:criterion).permit(:name, :criterion_description)
     end
 end
